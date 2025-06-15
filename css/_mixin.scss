@@ -1,0 +1,8 @@
+$tab: 768px;
+// $sp: ;
+
+@mixin tab {
+    @media screen and (max-width:($tab)) {
+        @content;
+    }
+}

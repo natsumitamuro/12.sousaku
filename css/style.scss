@@ -1,0 +1,176 @@
+@charset "UTF-8";
+@use 'mixin' as m;
+
+/*-------------------------------------------
+変数
+-------------------------------------------*/
+// 色
+// $primary-color: ; 基本・メインカラー
+// $secondary-color: ;	補助カラー
+// $accent-color: ;	アクセント（ボタンなど）
+$text-color: #000000; // 文字
+$link-color: #FFFFFF; //リンク
+$bg-color: #E6E2D7; //背景色
+// $border-color: ;	枠線の色
+
+
+// フォント
+$font-xs: 0.75rem; // 12px
+$font-s: 0.875rem; // 14px
+$font-m: 1rem; // 16px（基本）
+$font-l: 1.25rem; // 20px
+$font-xl: 1.5rem; // 24px
+$font-xxl: 2.25rem; // 36px
+
+
+/*-------------------------------------------
+共通
+-------------------------------------------*/
+body {
+    font-family: "Noto Serif JP", serif;
+    font-optical-sizing: auto;
+    background-color: $bg-color;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto; //？#newsが中央寄せにならない→margin-blockからinlineに変えたら解決
+    border: 1px solid;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: $link-color;
+}
+
+ul {
+    list-style: none;
+}
+
+h2 {
+    font-weight: normal;
+}
+
+.section-title-en {
+    font-size: $font-s;
+}
+
+.section-title-jp {
+    font-size: $font-xxl;
+
+    @include m.tab {
+        font-size: $font-xl;
+    }
+}
+
+/*-------------------------------------------
+header
+-------------------------------------------*/
+header {
+    height: 100vh;
+    width: 100%;
+    padding-top: 60px;
+    padding-right: 80px;
+    background-image: url("../img/top-background-pc.jpg");
+    background-size: cover;
+    background-position: center;
+    writing-mode: vertical-rl;
+    position: relative;
+
+    @include m.tab {
+        background-image: url("../img/top-background-sp.jpg");
+    }
+
+    .site-logo {
+        width: 40px;
+        margin-left: 55px;
+    }
+
+    .header-nav-list {
+        line-height: 45px;
+    }
+
+    .online-store {
+        display: inline-block;
+        position: absolute;
+        padding: 5px 30px; //bgを広げるため
+        background-color: #413f3f;
+        left: 30px;
+        bottom: 50px;
+
+        a {
+            padding: 20px;
+            border: 1px solid;
+        }
+    }
+}
+
+/*-------------------------------------------
+news
+-------------------------------------------*/
+#news {
+    writing-mode: vertical-rl;
+    width: 100%;
+    // margin-block: 200px;  //(上下・左右逆。blockだと.containerが中央寄せにならない)
+    margin-inline: 200px;
+
+    h2 {
+        margin-left: 80px;
+    }
+
+    dl {
+        margin-top: 80px;
+        height: 290px; //検証モードで2行になってしまうから追加
+    }
+
+    .news-item {
+        border-left: 1px solid;
+        padding-inline: 15px; //上下の余白(上下・左右が逆になる？)
+        padding-block: 30px; //左右の余白
+
+    }
+
+    .news-item:first-child {
+        border-right: 1px solid;
+    }
+
+    .news-date {
+        font-size: $font-xs;
+    }
+
+    @include m.tab {
+        margin-inline: 60px;
+
+        h2 {
+            margin-left: 30px;
+        }
+
+        dl {
+            margin-top: 20px;
+        }
+
+        .news-item {
+            padding-block: 10px; //左右の余白
+
+        }
+
+        .news-item:nth-child(n+4) {
+            display: none;
+        }
+    }
+}
+
+/*-------------------------------------------
+create
+-------------------------------------------*/
+#create {
+    h2 {
+        writing-mode: vertical-rl;
+        width: 100%;
+    }
+}
