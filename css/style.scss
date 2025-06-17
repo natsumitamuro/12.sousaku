@@ -5,13 +5,9 @@
 変数
 -------------------------------------------*/
 // 色
-// $primary-color: ; 基本・メインカラー
-// $secondary-color: ;	補助カラー
-// $accent-color: ;	アクセント（ボタンなど）
 $text-color: #000000; // 文字
 $link-color: #FFFFFF; //リンク
 $bg-color: #E6E2D7; //背景色
-// $border-color: ;	枠線の色
 
 
 // フォント
@@ -33,8 +29,9 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1030px;
     margin: 0 auto; //？#newsが中央寄せにならない→margin-blockからinlineに変えたら解決
+    padding-inline: 20px;
     border: 1px solid;
 }
 
@@ -55,6 +52,12 @@ ul {
 h2 {
     font-weight: normal;
 }
+
+.site-logo {
+    width: 40px;
+    margin-left: 55px;
+}
+
 
 .section-title-en {
     font-size: $font-s;
@@ -84,11 +87,6 @@ header {
 
     @include m.tab {
         background-image: url("../img/top-background-sp.jpg");
-    }
-
-    .site-logo {
-        width: 40px;
-        margin-left: 55px;
     }
 
     .header-nav-list {
@@ -166,11 +164,88 @@ news
 }
 
 /*-------------------------------------------
+createとscienceの共通部
+-------------------------------------------*/
+#create,
+#science {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 200px;
+
+    @include m.tab {
+        margin-bottom: 60px;
+    }
+
+    .section-img-wrap {
+        position: relative;
+        padding-top: 100px;
+
+        img {
+            max-width: 640px;
+        }
+
+        .section-text {
+            display: flex; //pタグを真ん中に配置するためにflex
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: -15px;
+            width: 50%;
+            height: 150px;
+            color: #FFFFFF;
+        }
+    }
+
+    h2 {
+        writing-mode: vertical-rl;
+
+        .section-title-en {
+            padding-top: 30px;
+
+            @include m.tab {
+                display: none;
+            }
+        }
+    }
+
+}
+
+/*-------------------------------------------
 create
 -------------------------------------------*/
 #create {
-    h2 {
-        writing-mode: vertical-rl;
-        width: 100%;
+    flex-direction: row-reverse;
+
+    .section-text {
+        left: -20px;
+        background-color: rgba(249, 233, 6, 0.6);
     }
+}
+
+/*-------------------------------------------
+science
+-------------------------------------------*/
+#science {
+    .section-text {
+        right: -20px;
+        background-color: rgba(149, 42, 38, 0.6);
+    }
+}
+
+/*-------------------------------------------
+footer
+-------------------------------------------*/
+footer {
+    background-color: #000000;
+    writing-mode: vertical-rl;
+    width: 100%;
+
+    .adress {
+        color: #FFFFFF;
+    }
+
+    .copyright {
+        color: #FFFFFF;
+    }
+
 }
