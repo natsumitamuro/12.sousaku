@@ -132,11 +132,12 @@ news
         padding-inline: 15px; //上下の余白(上下・左右が逆になる？)
         padding-block: 30px; //左右の余白
 
+        &:first-child {
+            border-right: 1px solid;
+        }
     }
 
-    .news-item:first-child {
-        border-right: 1px solid;
-    }
+
 
     .news-date {
         font-size: $font-xs;
@@ -266,12 +267,12 @@ footer {
     .footer-contact {
         // line-height: 20px;  //borderの長さを変えたかった
 
-        & a:first-child {
+        a:first-child {
             padding-bottom: 10px;
             border-bottom: 1px solid;
         }
 
-        & a:last-child {
+        a:last-child {
             padding-top: 10px;
         }
     }
