@@ -118,49 +118,49 @@ news
     // margin-block: 200px;  //(上下・左右逆。blockだと.containerが中央寄せにならない)
     margin-inline: 200px;
 
+    @include m.tab {
+        margin-inline: 60px;
+    }
+
     h2 {
         margin-left: 80px;
+
+        @include m.tab {
+            margin-left: 30px;
+        }
     }
 
     dl {
         margin-top: 80px;
-        height: 290px; //検証モードで2行になってしまうから追加
-    }
 
-    .news-item {
-        border-left: 1px solid;
-        padding-inline: 15px; //上下の余白(上下・左右が逆になる？)
-        padding-block: 30px; //左右の余白
-
-        &:first-child {
-            border-right: 1px solid;
-        }
-    }
-
-
-
-    .news-date {
-        font-size: $font-xs;
-    }
-
-    @include m.tab {
-        margin-inline: 60px;
-
-        h2 {
-            margin-left: 30px;
-        }
-
-        dl {
+        @include m.tab {
             margin-top: 20px;
         }
 
+
         .news-item {
-            padding-block: 10px; //左右の余白
+            border-left: 1px solid;
+            padding-inline: 15px; //上下の余白(上下・左右が逆になる？)
+            padding-block: 30px; //左右の余白
 
-        }
+            @include m.tab {
+                padding-block: 10px; //左右の余白になる
+            }
 
-        .news-item:nth-child(n+4) {
-            display: none;
+
+            &:first-child {
+                border-right: 1px solid;
+            }
+
+            .news-date {
+                font-size: $font-xs;
+            }
+
+            @include m.tab {
+                &:nth-child(n+4) {
+                    display: none;
+                }
+            }
         }
     }
 }
@@ -209,7 +209,6 @@ createとscienceの共通部
             }
         }
     }
-
 }
 
 /*-------------------------------------------
